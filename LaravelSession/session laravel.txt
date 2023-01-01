@@ -1,0 +1,22 @@
+Session Notes----------------
+1 - inside config/session then 'driver' => env('SESSION_DRIVER', 'file'),it stores your session in a file
+inside Storage/Framework/Session
+2- you can store your session inside an encrypted cookie,all you need to do is to write 
+'driver' => env('SESSION_DRIVER', 'cookie')
+3- you can store em inside database as well 'driver' => env('SESSION_DRIVER', 'database')
+4- lifetime after 120min our session will be deleted(same folder as the config/session)
+5 same folder from 4 if you encrypt it ,encypt => true
+6-what manages session in laravel is a middleware called start session
+7- french note for people who don't understand english : Étant donné que les requêtes HTTP sont fugitives et ne laissent aucune trace il est
+important de disposer d’un système qui permet de mémoriser des informations entre deux requêtes. C’est justement l’objet des sessions.
+La configuration des sessions se trouve dans le fichier de configuration session.php. On trouve dans le fichier .env la définition du driver
+ainsi que la durée de vie des informations :
+8- store data using :
+---request: $request->session()->put('clé', 'valeur');
+---helper: session(['clé' => 'valeur']);
+9 retrieve data using :
+----request: $valeur = $request->session()->get('clé');
+----helper: $valeur = session('clef');
+--- while retieving it you can give it a default value $valeur = session('clef', 'valeur par défaut');
+10 -usefull to know if certain key is present and available inside a session :if (session()->has('error')) ...
+
